@@ -9,12 +9,14 @@ phases:
       - npm install
   pre_build:
     commands:
-      - echo Nothing to do in the pre_build phase...
+      - echo Initializing build...
   build:
     commands:
       - echo Build started on `date`
       - npm run build
   post_build:
+    commands:
+      - echo Build succeeded 🚀
 commands:
   - echo Build completed on `date`
 cache:
