@@ -1,5 +1,6 @@
 declare namespace Global {
     interface ExpressApp extends Express.Application {
+        get: (path: string, callback: Function) => void
         use: (use: any, value?: any) => void
         set: (set: string, value: any) => void
         listen: (port: number | string, callback: Function) => void

@@ -29,8 +29,12 @@ const initApp = async () => {
     return app
 }
 
-initApp().then((app: Global.ExpressApp) =>
+initApp().then((app: Global.ExpressApp) => {
+    app.get('/', async (req: any, res: any) => res.status(200).json({
+        msg: 'API for https://swooo.sh'
+    }))
+
     app.listen(process.env.PORT ?? 3000, () =>
         console.log('App initialized 🚀')
     )
-)
+})
