@@ -1,5 +1,6 @@
 import { Global } from './global'
 import { api } from './routes'
+import { base } from './routes/base'
 import * as dotenv from 'dotenv'
 import express from 'express'
 import cors from 'cors'
@@ -22,19 +23,16 @@ const initApp = async () => {
         cors(),
         helmet(),
         morgan('common'),
-        ['/api/v2', api]
+        ['/api/v2', api],
+        ['/', base]
     ])
     await establishConnection(process.env.USER, process.env.PASS)
 
     return app
 }
 
-initApp().then((app: Global.ExpressApp) => {
-    app.get('/', async (req: any, res: any) => res.status(200).json({
-        msg: 'API for https://swooo.sh'
-    }))
-
+initApp().then((app: Global.ExpressApp) =>
     app.listen(process.env.PORT ?? 3000, () =>
         console.log('App initialized 🚀')
     )
-})
+)
