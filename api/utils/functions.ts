@@ -26,16 +26,23 @@ const establishConnection = async (username: string, password: string) => {
     )
 }
 
-const save = async (data: any, model: Mongoose["Model"], validator: Yup.ObjectSchema) => {
-    const url = await new model(await validate(data, validator as Yup.ObjectSchema<object & {_id: string}>))
+const save = async (data: Global.URL, model: Mongoose['Model'], validator: Yup.ObjectSchema) => {
+    const url = await new model(await validate(data, validator as Yup.ObjectSchema<object & Global.URL>))
     await url.save()
 }
 
-const find = async (id: string, model: Mongoose["Model"]) => new Promise(((resolve, reject) => {
+const find = async (id: string, model: Mongoose['Model']) => new Promise((resolve, reject) =>
     model.findById(id, (err, doc: Global.URL | null) => {
         if (!doc) reject()
-        else resolve(doc)
+        else resolve(doc as Global.URL)
     })
-}))
+)
 
-export { setMiddleware, useMiddleware, establishConnection, save, find }
+const remove = async (id: string, model: Mongoose['Model']) => new Promise((resolve, reject) =>
+    model.findByIdAndDelete(id, ((err, doc) => {
+        if (!doc) reject()
+        else resolve(doc as Global.URL)
+    }))
+)
+
+export { setMiddleware, useMiddleware, establishConnection, save, find, remove }

@@ -1,3 +1,4 @@
-import express from 'express';
-declare const api: express.Router;
+import { base } from "./base";
+export { base };
+import { api } from "./api";
 export { api };
