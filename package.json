@@ -9,7 +9,6 @@
     "scripts": {
         "start": "node ./build/app.js",
         "serve": "nodemon ./build/app.js",
-        "build": "tsc",
         "serve:ts": "tsc --watch"
     },
     "keywords": ["URL Shortener", "URL", "Shortener"],
