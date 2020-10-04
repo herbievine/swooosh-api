@@ -1,5 +1,6 @@
 import { Global } from '../global'
 import mongoose, { Mongoose } from 'mongoose'
+import { limit, slow } from './config'
 import Yup from 'yup'
 import { error, validate } from "./helpers";
 
@@ -21,7 +22,7 @@ const establishConnection = async (username: string, password: string) => {
 
     await mongoose.connect(
         URI,
-        {useNewUrlParser: true, useUnifiedTopology: true},
+        { useNewUrlParser: true, useUnifiedTopology: true },
         (e) => e === null ? null : error('Connection to MongoDB failed', e)
     )
 }
@@ -39,10 +40,10 @@ const find = async (id: string, model: Mongoose['Model']) => new Promise((resolv
 )
 
 const remove = async (id: string, model: Mongoose['Model']) => new Promise((resolve, reject) =>
-    model.findByIdAndDelete(id, ((err, doc) => {
+    model.findByIdAndDelete(id, (err, doc) => {
         if (!doc) reject()
         else resolve(doc as Global.URL)
-    }))
+    })
 )
 
 export { setMiddleware, useMiddleware, establishConnection, save, find, remove }

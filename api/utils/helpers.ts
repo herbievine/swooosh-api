@@ -1,7 +1,8 @@
+import express from 'express'
 import Yup from "yup";
 import {Global} from "../global";
 
-const error = async (msg: string, stack: any, status?: number, res?: any) => {
+const error = async (msg: string, stack: any, status?: number, res?: express.Response) => {
     if (res !== undefined) res.status(status | 400).json({
         msg: msg,
         stack: stack,
@@ -11,7 +12,7 @@ const error = async (msg: string, stack: any, status?: number, res?: any) => {
     else console.error(`========= ${msg} =========\n${stack}`)
 }
 
-const success = async (data: object | string, res: any) => res.status(200).json({
+const success = async (data: object | string, res: express.Response) => res.status(200).json({
     data: data,
     ok: true,
     status: 200
