@@ -11,7 +11,7 @@
         "serve": "nodemon ./build/app.js",
         "build": "tsc",
         "serve:ts": "tsc --watch",
-        "heroku-prebuild": "npm run build"
+        "heroku-prebuild": "npm i -g typescript && npm run build"
     },
     "keywords": ["URL Shortener", "URL", "Shortener"],
     "author": "Herbie Vine",
