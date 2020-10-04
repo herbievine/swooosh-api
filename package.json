@@ -9,7 +9,9 @@
     "scripts": {
         "start": "node ./build/app.js",
         "serve": "nodemon ./build/app.js",
-        "serve:ts": "tsc --watch"
+        "build": "tsc",
+        "serve:ts": "tsc --watch",
+        "heroku-prebuild": "npm i && npm i -g typescript && npm run build"
     },
     "keywords": ["URL Shortener", "URL", "Shortener"],
     "author": "Herbie Vine",
