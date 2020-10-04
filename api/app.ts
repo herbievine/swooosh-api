@@ -15,7 +15,7 @@ import {
 dotenv.config()
 
 const initApp = async () => {
-    const app: Global.ExpressApp = await express()
+    const app: express.Application = await express()
 
     await setMiddleware(app, [{ setting: 'trust proxy', value: 1 }])
     await useMiddleware(app, [
@@ -31,8 +31,8 @@ const initApp = async () => {
     return app
 }
 
-initApp().then((app: Global.ExpressApp) =>
+initApp().then((app: express.Application) =>
     app.listen(process.env.PORT ?? 3000, () =>
-        console.log('App initialized 🚀')
+        console.log(`App initialized on port ${process.env.PORT ?? 3000} 🚀`)
     )
 )

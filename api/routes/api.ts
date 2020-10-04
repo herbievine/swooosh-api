@@ -4,7 +4,7 @@ import { save, find, remove } from '../utils/functions'
 import { urlValidationSchema } from '../utils/schema'
 import { error, success } from '../utils/helpers'
 import { limit, slow } from '../utils/config'
-import { Global } from "../global";
+import { Global } from '../global';
 
 const api: express.Router = express.Router()
 
