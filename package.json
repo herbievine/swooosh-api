@@ -2,7 +2,8 @@
     "name": "swooosh-api",
     "version": "1.0.0",
     "description": "API for swooo.sh",
-    "main": "./build/app.js",
+    "main": "./build/app",
+    "typings": "./types/app",
     "engines": {
         "node": "12.x"
     },
