@@ -12,7 +12,7 @@
         "serve": "nodemon ./build/app.js",
         "build": "tsc",
         "serve:ts": "tsc --watch",
-        "heroku-prebuild": "npm i && npm i -g typescript && npm run build"
+        "heroku-prebuild": "npm i && npm i -g typescript"
     },
     "keywords": [
         "URL Shortener",
