@@ -3,11 +3,15 @@
     "version": "1.0.0",
     "description": "API for swooo.sh",
     "main": "./build/app.js",
+    "engines": {
+        "node": "12.x"
+    },
     "scripts": {
         "start": "node ./build/app.js",
         "serve": "nodemon ./build/app.js",
         "build": "tsc",
-        "serve:ts": "tsc --watch"
+        "serve:ts": "tsc --watch",
+        "heroku-prebuild": "npm run build"
     },
     "keywords": ["URL Shortener", "URL", "Shortener"],
     "author": "Herbie Vine",
