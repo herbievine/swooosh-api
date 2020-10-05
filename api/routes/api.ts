@@ -28,18 +28,18 @@ api.post('/create', o, async (req: express.Request, res: express.Response) => {
     }
 })
 
-api.get('/analytics/:id', o, async (req: express.Request, res: express.Response) => {
+api.get('/analytics', o, async (req: express.Request, res: express.Response) => {
     try {
-        const url = await find(req.params.id, URL)
+        const url = await find(req.body.id, URL)
         await success(url as Global.URL, res)
     } catch (e) {
         await error('Can\'t find URL', e, 404, res)
     }
 })
 
-api.delete('/delete/:id', o, async (req: express.Request, res: express.Response) => {
+api.delete('/delete', o, async (req: express.Request, res: express.Response) => {
     try {
-        await remove(req.params.id, URL)
+        await remove(req.body.id, URL)
         await success('Successfully deleted URL', res)
     } catch (e) {
         await error('Can\'t find URL', e, 404, res)
